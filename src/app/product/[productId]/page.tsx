@@ -4,23 +4,28 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { type Product } from '@/types/category';
+import { type ErrorType, type Product } from '@/types/category';
+import { fetchProduct } from '@/services/fetchProducts';
 
 export default function ProductDetailsPage() {
   const { productId: id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
+  const [error, setError] = useState<ErrorType | null>(null);
 
   useEffect(() => {
     if (!id) return;
 
-    fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
-      .then((res) => res.json())
+    fetchProduct(id as string)
       .then((data: Product) => setProduct(data))
-      .catch((err) => console.error('Error fetching product details:', err));
+      .catch((err) => setError(err));
   }, [id]);
 
   if (!product) {
     return <p className="p-6">Loading product details...</p>;
+  }
+
+  if (error) {
+    return <p className="p-6 text-red-500">Error loading product: {error.message}</p>;
   }
 
   return (

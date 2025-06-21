@@ -1,6 +1,7 @@
 'use client';
 
-import { Category } from '@/types/category';
+import { fetchCategory } from '@/services/fetchCategories';
+import type { Category, ErrorType } from '@/types/category';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -9,18 +10,22 @@ import { useEffect, useState } from 'react';
 function CategoryPage() {
   const { categoryId: id } = useParams();
   const [category, setCategory] = useState<Category | null>(null);
+  const [error, setError] = useState<ErrorType | null>(null);
 
   useEffect(() => {
     if (!id) return;
 
-    fetch(`https://api.escuelajs.co/api/v1/categories/${id}`)
-      .then((res) => res.json())
+    fetchCategory(id as string)
       .then((data: Category) => setCategory(data))
-      .catch((err) => console.error('Error fetching category:', err));
+      .catch((err) => setError(err));
   }, [id]);
 
   if (!category) {
     return <p className="p-6">Loading category details...</p>;
+  }
+
+  if (error) {
+    return <p className="p-6 text-red-500">Error loading category: {error.message}</p>;
   }
 
   return (

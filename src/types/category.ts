@@ -19,3 +19,9 @@ export type Product = {
   };
   images: string[];
 };
+
+export type ErrorType = {
+  message: string;
+  error: string;
+  statusCode: number;
+};
