@@ -1,25 +1,22 @@
 'use client';
 
 import CategoryCard from '@/components/CategoryCard';
-import { fetchCategories } from '@/services/fetchCategories';
-import type { Category, ErrorType } from '@/types/category';
-import { useEffect, useState } from 'react';
+import { fetchCategories } from '@/redux/categorySlice';
+import { useAppDispatch, useAppSelector } from '@/redux/store';
+import { useEffect } from 'react';
+import {} from 'react-redux';
 
 export default function CatalogPage() {
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [error, setError] = useState<ErrorType | null>(null);
+  const { categories, error } = useAppSelector((state) => state.category);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchCategories()
-      .then((data) => setCategories(data))
-      .catch((err) => {
-        setError(err);
-      });
+    dispatch(fetchCategories());
   }, []);
 
   return (
     <main className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Catalog</h1>
+      <h1 className="text-3xl font-bold mb-6">Catagory</h1>
       {error && <p className="text-red-500 mb-4">Error fetching categories: {error.message}</p>}
       {!categories.length && !error && <p>Loading categories...</p>}
 

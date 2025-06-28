@@ -1,19 +1,27 @@
 'use client';
 
-import { type Product } from '@/types/category';
+import { useAppDispatch, useAppSelector } from '@/redux/store';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import { fetchFeaturedProducts } from '@/redux/featuredProducts';
 
 function FeaturedProducts() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { featuredProduct: products, isLoading, error } = useAppSelector((state) => state.featuredProducts);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
-      .then((res) => res.json())
-      .then((data: Product[]) => setProducts(data.slice(0, 8))) // take first 8 as featured
-      .catch((err) => console.error('Error fetching products:', err));
+    dispatch(fetchFeaturedProducts());
   }, []);
+
+  if (isLoading) {
+    return <p className="p-6">Loading featured products here...</p>;
+  }
+
+  if (error) {
+    return <p className="p-6 text-red-500">Error loading product: {error.message}</p>;
+  }
 
   return (
     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

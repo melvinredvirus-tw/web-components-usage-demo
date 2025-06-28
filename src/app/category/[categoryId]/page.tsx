@@ -1,23 +1,20 @@
 'use client';
 
-import { fetchCategory } from '@/services/fetchCategories';
-import type { Category, ErrorType } from '@/types/category';
+import { fetchCategoryById } from '@/redux/selectedCategory';
+import { useAppDispatch, useAppSelector } from '@/redux/store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function CategoryPage() {
   const { categoryId: id } = useParams();
-  const [category, setCategory] = useState<Category | null>(null);
-  const [error, setError] = useState<ErrorType | null>(null);
+  const dispatch = useAppDispatch();
+  const { selectedCategory: category, error } = useAppSelector((state) => state.selectedCategory);
 
   useEffect(() => {
     if (!id) return;
-
-    fetchCategory(id as string)
-      .then((data: Category) => setCategory(data))
-      .catch((err) => setError(err));
+    dispatch(fetchCategoryById(id as string));
   }, [id]);
 
   if (!category) {

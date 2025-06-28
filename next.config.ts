@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       'api.escuelajs.co',
       'images.unsplash.com',
       'placehold.co',
+      'pravatar.cc',
     ],
   },
 };
