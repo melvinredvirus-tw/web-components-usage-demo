@@ -1,31 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { type ErrorType, type Product } from '@/types/category';
-import { fetchProduct } from '@/services/fetchProducts';
+import { useAppDispatch, useAppSelector } from '@/redux/store';
+import { fetchProductById } from '@/redux/selectedProduct';
 
 export default function ProductDetailsPage() {
   const { productId: id } = useParams();
-  const [product, setProduct] = useState<Product | null>(null);
-  const [error, setError] = useState<ErrorType | null>(null);
+
+  const dispatch = useAppDispatch();
+  const { selectedProduct: product, isLoading, error } = useAppSelector((state) => state.selectedProduct);
 
   useEffect(() => {
     if (!id) return;
 
-    fetchProduct(id as string)
-      .then((data: Product) => setProduct(data))
-      .catch((err) => setError(err));
+    dispatch(fetchProductById(id as string));
   }, [id]);
-
-  if (!product) {
-    return <p className="p-6">Loading product details...</p>;
-  }
 
   if (error) {
     return <p className="p-6 text-red-500">Error loading product: {error.message}</p>;
+  }
+
+  if (isLoading) {
+    return <p className="p-6">Loading product details...</p>;
+  }
+
+  if (!product) {
+    return <p className="p-6">Product not found.</p>;
   }
 
   return (

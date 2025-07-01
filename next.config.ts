@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       'images.unsplash.com',
       'placehold.co',
       'pravatar.cc',
+      'th.bing.com',
     ],
   },
 };

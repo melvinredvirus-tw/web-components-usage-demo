@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './categorySlice';
 import selectedCategoryReducer from './selectedCategory';
+import selectedProductReducer from './selectedProduct';
 import featuredProductsReducer from './featuredProducts';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
@@ -9,6 +10,7 @@ const store = configureStore({
     category: categoryReducer,
     selectedCategory: selectedCategoryReducer,
     featuredProducts: featuredProductsReducer,
+    selectedProduct: selectedProductReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });

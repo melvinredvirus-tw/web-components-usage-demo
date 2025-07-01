@@ -25,7 +25,7 @@ function FeaturedProducts() {
 
   return (
     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {products.map((product) => (
+      {products.slice(0, 15).map((product) => (
         <div
           key={product.id}
           className="border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col items-center text-center"
