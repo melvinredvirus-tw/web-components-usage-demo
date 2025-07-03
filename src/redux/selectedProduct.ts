@@ -2,12 +2,12 @@ import { ErrorType, Product } from '@/types/category';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchProductById = createAsyncThunk('category/fetchProductById', (categoryId: string | string[]) => {
+export const fetchProductById = createAsyncThunk('product/fetchProductById', (productId: string | string[]) => {
   return axios
-    .get<Product>(`https://api.escuelajs.co/api/v1/categories/${categoryId}`)
+    .get<Product>(`https://api.escuelajs.co/api/v1/products/${productId}`)
     .then((res) => res.data)
     .catch((error: ErrorType) => {
-      console.log('Error fetching category by ID:', error);
+      console.log('Error fetching product by ID:', error);
       return error;
     });
 });

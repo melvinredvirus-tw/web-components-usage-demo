@@ -31,17 +31,17 @@ export default function RootLayout(props: Readonly<RootLayoutProps>) {
         <MyHeader>
           <Link
             slot='title'
-            href={'about'}>
-            Flowbite
+            href={'/'}>
+            <h1 className='text-xl font-bold'>Web Components Demo</h1>
           </Link>
           <Link
             slot='actions'
-            href={'about'}>
+            href={'/about'}>
             About
           </Link>
           <Link
             slot='actions'
-            href={'category'}>
+            href={'/category'}>
             Category
           </Link>
         </MyHeader>
