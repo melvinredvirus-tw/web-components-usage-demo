@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import { fetchFeaturedProducts } from '@/redux/featuredProducts';
 import { MyProductCard } from './custom/MyCard';
+import Link from 'next/link';
 
 function FeaturedProducts() {
   const { featuredProduct: products, isLoading, error } = useAppSelector((state) => state.featuredProducts);
@@ -25,7 +26,13 @@ function FeaturedProducts() {
   return (
     <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
       {products.slice(0, 15).map((product) => (
-        <MyProductCard key={product.id} link={`/product/${product.id}`} name={product.title} image={product.images[0]} price={product.price} linkText='View details->' />
+        <MyProductCard key={product.id} name={product.title} image={product.images[0]} price={product.price} >
+          <Link
+            slot='link'
+            href={`/product/${product.id}`}>
+            View details
+          </Link>
+        </MyProductCard>
       ))}
     </div>
   );

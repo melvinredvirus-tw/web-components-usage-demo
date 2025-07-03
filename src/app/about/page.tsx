@@ -1,5 +1,6 @@
 'use client';
 
+import { MyAccordion } from '@/components/custom/MyAccordion';
 import { MyForm } from '@/components/custom/MyForm';
 import { useState } from 'react';
 
@@ -27,33 +28,30 @@ export default function AboutPage() {
       <h1 className='text-4xl font-bold mb-8 text-center'>About Us</h1>
 
       {/* About Premium Service */}
-      <section className='mb-10'>
-        <h2 className='text-2xl font-semibold mb-3'>About Our Premium Service</h2>
+      <MyAccordion title="About Our Premium Service">
         <p className='text-gray-500 leading-relaxed'>
           Our premium service is designed to provide the best quality and experience to our customers. From high-quality
           fabrics to personalized customer support, we ensure every product meets the highest standards of excellence.
         </p>
-      </section>
+      </MyAccordion>
 
       {/* Vision from the Founder */}
-      <section className='mb-10'>
-        <h2 className='text-2xl font-semibold mb-3'>A Vision for the Top</h2>
+      <MyAccordion title="A Vision for the Top">
         <p className='text-gray-500 leading-relaxed'>
           Our founder envisions taking this company to the very top of the fashion and lifestyle industry. With
           innovative ideas, sustainable practices, and a customer-first approach, we are committed to building a global
           brand that truly makes a difference.
         </p>
-      </section>
+      </MyAccordion>
 
       {/* Help to the Eco-System */}
-      <section className='mb-10'>
-        <h2 className='text-2xl font-semibold mb-3'>Helping the Eco-System</h2>
+      <MyAccordion title='Helping the Eco-System'>
         <p className='text-gray-500 leading-relaxed'>
           We believe in giving back to the environment. By using eco-friendly materials and processes, and ensuring the
           durability and quality of every cloth, we aim to reduce fashion waste and help build a more sustainable
           future.
         </p>
-      </section>
+      </MyAccordion>
 
       {/* Contact Us Form */}
       <section className='mt-16'>
