@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { MyHeader } from '@/components/custom/MyHeader';
 import AllProvider from '@/redux/AllProvider';
+import Link from 'next/link';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,10 +26,25 @@ type RootLayoutProps = {
 
 export default function RootLayout(props: Readonly<RootLayoutProps>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <MyHeader heading="Flowbite" />
-        {/* <Header /> */}
+        <MyHeader>
+          <Link
+            slot='title'
+            href={'about'}>
+            Flowbite
+          </Link>
+          <Link
+            slot='actions'
+            href={'about'}>
+            About
+          </Link>
+          <Link
+            slot='actions'
+            href={'category'}>
+            Category
+          </Link>
+        </MyHeader>
         <AllProvider>{props.children}</AllProvider>
       </body>
     </html>
