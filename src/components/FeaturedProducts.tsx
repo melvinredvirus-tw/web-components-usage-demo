@@ -25,12 +25,7 @@ function FeaturedProducts() {
   return (
     <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
       {products.slice(0, 15).map((product) => (
-        <MyCard
-          key={product.id}
-          name={product.title}
-          image={product.images[0]}
-          price={product.price}
-        />
+        <MyProductCard key={product.id} link={`/product/${product.id}`} name={product.title} image={product.images[0]} price={product.price} linkText='View details->' />
       ))}
     </div>
   );
