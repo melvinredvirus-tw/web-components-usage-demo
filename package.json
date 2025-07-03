@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@lit/react": "^1.0.7",
     "@mui/icons-material": "^7.1.2",
     "@mui/material": "^7.1.2",
     "@reduxjs/toolkit": "^2.8.2",
@@ -20,7 +21,8 @@
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "web-components-demo": "git+https://github.com/melvinredvirus-tw/web-component-demo.git#149a903c32b4831f2a80ba50acf622161cb2941e"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -7,7 +7,7 @@ export default function Home() {
       <section
         className="h-screen bg-fixed bg-center bg-cover flex items-center justify-center text-white"
         style={{
-          backgroundImage: `url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg')`,
+          backgroundImage: `url('/bg.jpeg')`,
         }}
       >
         <div className="bg-black bg-opacity-50 p-8 rounded">

@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
       'placehold.co',
       'pravatar.cc',
       'th.bing.com',
+      'images.pexels.com',
+      'fastly.picsum.photos',
     ],
   },
 };
