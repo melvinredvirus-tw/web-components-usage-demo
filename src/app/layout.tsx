@@ -27,7 +27,7 @@ export default function RootLayout(props: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <MyHeader name="Flowbite" />
+        <MyHeader heading="Flowbite" />
         {/* <Header /> */}
         <AllProvider>{props.children}</AllProvider>
       </body>

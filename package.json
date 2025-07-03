@@ -22,7 +22,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
-    "web-components-demo": "git+https://github.com/melvinredvirus-tw/web-component-demo.git#149a903c32b4831f2a80ba50acf622161cb2941e"
+    "web-components-demo": "git+https://github.com/melvinredvirus-tw/web-component-demo.git#main"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

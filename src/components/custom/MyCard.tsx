@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { MyCard as CardWebComponent } from 'web-components-demo/dist/my-card';
+import { MyProductCard as ProductCardWebComponent } from 'web-components-demo/dist/molecules/my-product-card';
 import { createComponent } from '@lit/react';
 
-export const MyCard = createComponent({
-  tagName: 'my-card',
-  elementClass: CardWebComponent,
+export const MyProductCard = createComponent({
+  tagName: 'my-product-card',
+  elementClass: ProductCardWebComponent,
   react: React,
   events: {
     onactivate: 'activate',
